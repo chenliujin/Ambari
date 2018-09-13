@@ -111,13 +111,17 @@ Ambari Server 'setup' completed successfully.
 - PASSWORD: `admin`
 
 1. Launch Install Wizard
-2. Install Options
+1. Select Version
+ - HDP-2.6.5.0
+ - HDFS: 2.7.3
+ - HIVE: 1.2.1000
+ - HBase: 1.1.2
+1. Install Options
 
 ### Target Hosts
 
 ```
-hadoop-slave1
-hadoop-slave2
+h4.chenliujin.com
 ```
 
 ### Host Registration Information
@@ -125,6 +129,23 @@ hadoop-slave2
 上传 ambari-server 服务器的 id_rsa 文件
 
 
+# ambari-agent
+
+## reset 
+
+```
+# ambari-agent stop
+# ambari-agent reset h1.chenliujin.com
+```
+
+## python 2.7.5版本不兼容
+
+```
+# vim /etc/ambari-agent/conf/ambari-agent.ini
+[security]
+ssl_verify_cert=0
+force_https_protocol=PROTOCOL_TLSv1_2
+```
 
 
 # 参考文件
