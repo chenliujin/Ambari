@@ -24,12 +24,15 @@ ln -s /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/
 ```
 # mysql -h 127.0.0.1 -uroot -p
 mysql > create database ambari;
+mysql > CREATE USER 'ambari'@'%' IDENTIFIED BY 'chenliujin';
+mysql > GRANT ALL PRIVILEGES on ambari.* to ambari@'%';
+mysql > flush privileges;
 mysql > use ambari;
 mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 
+
 mysql -h 127.0.0.1 -uroot -p ambari < /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
 ```
-
 
 # 初始化
 
