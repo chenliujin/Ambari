@@ -6,19 +6,18 @@ curl http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.2.0/amb
 
 # Install
 
+## 1. ambari-server
 ```
 # yum install -y ambari-server
 ```
 
-# MySQL Connector
+## 2. MySQL Connector
 
 ```
 yum install -y mysql-connector-java
 
 ln -s /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/mysql-connector-java.jar
 ```
-
-
 
 # MySQL
 
