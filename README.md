@@ -34,6 +34,15 @@ mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 mysql -h 127.0.0.1 -uroot -p ambari < /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
 ```
 
+## 2. Hive
+
+```
+mysql > create database hive;
+mysql > CREATE USER 'hive'@'%' IDENTIFIED BY 'chenliujin';
+mysql > GRANT ALL PRIVILEGES on hive.* to hive@'%';
+mysql > flush privileges;
+```
+
 # 初始化
 
 ```
@@ -116,7 +125,11 @@ Ambari Server 'setup' completed successfully.
  - HDFS: 2.7.3
  - HIVE: 1.2.1000
  - HBase: 1.1.2
+ - Sqoop: 1.4.6
 1. Install Options
+1. Customize Services
+
+输入 Hive, Grafana 的账号或密码
 
 ### Target Hosts
 
