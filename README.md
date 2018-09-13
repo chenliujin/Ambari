@@ -22,6 +22,11 @@ ln -s /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/
 # MySQL
 
 ```
+# mysql -h 127.0.0.1 -uroot -p
+mysql > create database ambari;
+mysql > use ambari;
+mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
+
 mysql -h 127.0.0.1 -uroot -p ambari < /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
 ```
 
