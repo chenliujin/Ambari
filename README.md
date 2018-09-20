@@ -1,3 +1,45 @@
+# Docker
+
+## 1. network
+
+```
+docker network create \
+  --driver bridge \
+  --subnet 192.168.100.0/24 \
+  --gateway 192.168.100.1 \
+  -o parent=eth0 \
+  subnet1
+```
+
+## 2. ambari-server
+
+- 192.168.100.2 h1.chenliujin.com
+- dns
+- ambari-server
+
+```
+```
+
+### 2.1 配置宿主服务器 DNS
+
+```
+# vim /etc/resolv.conf
+nameserver 192.168.100.2
+nameserver 114.114.114.114
+nameserver 8.8.8.8
+
+# chattr +i /etc/resolv.conf --不可修改
+```
+
+## 3. ambari-agent
+
+```
+```
+
+
+---
+
+
 # Yum 
 
 ```
