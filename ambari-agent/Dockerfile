@@ -8,7 +8,6 @@ RUN yum install -y ambari-agent
 
 COPY ./etc/yum.repos.d /etc/yum.repos.d
 
-RUN yum install -y hdp-select
 RUN yum install -y ntp
 
 RUN systemctl enable ntpd
