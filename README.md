@@ -1,18 +1,16 @@
-
+- 高可用
 
 # Docker Install
 
 ## docker image
-- dns
-- ambari-server
-  - ambari-server
-  - ntp
 
 - 192.168.100.2   dns.chenliujin.com
 - 192.168.100.100 ambari-mysql.chenliujin.com
 - 192.168.100.101 ambari-server.chenliujin.com 
 - 192.168.100.102 ambari-h2.chenliujin.com 
+  - NameNode
 - 192.168.100.103 ambari-h3.chenliujin.com
+  - SNameNode
 - 192.168.100.104 ambari-h4.chenliujin.com
 
 ## 1. DNS Service
