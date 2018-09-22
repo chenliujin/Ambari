@@ -7,15 +7,13 @@
 - ambari-server
   - ambari-server
   - ntp
-- ambari-agent
-  - ambari-agent
-  - ntp
 
 - 192.168.100.2   dns.chenliujin.com
 - 192.168.100.100 ambari-mysql.chenliujin.com
 - 192.168.100.101 ambari-server.chenliujin.com 
 - 192.168.100.102 ambari-h2.chenliujin.com 
-- 192.168.100.103 ambar-h3.chenliujin.com
+- 192.168.100.103 ambari-h3.chenliujin.com
+- 192.168.100.104 ambari-h4.chenliujin.com
 
 ## 1. DNS Service
 
@@ -236,7 +234,8 @@ Ambari Server 'setup' completed successfully.
 ### Target Hosts
 
 ```
-h4.chenliujin.com
+ambari-h2.chenliujin.com
+ambari-h3.chenliujin.com
 ```
 
 ### Host Registration Information
@@ -251,15 +250,6 @@ h4.chenliujin.com
 ```
 # ambari-agent stop
 # ambari-agent reset ambari-server.chenliujin.com
-```
-
-## python 2.7.5版本不兼容
-
-```
-# vim /etc/ambari-agent/conf/ambari-agent.ini
-[security]
-ssl_verify_cert=0
-force_https_protocol=PROTOCOL_TLSv1_2
 ```
 
 # Service
