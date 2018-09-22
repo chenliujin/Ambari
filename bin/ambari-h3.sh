@@ -3,7 +3,7 @@
 docker run \
   --network=ambari-network \
   --ip=192.168.100.103 \
-  --name=ambari-h33 \
+  --name=ambari-h3 \
   -h=ambari-h3.chenliujin.com \
   -d \
   --restart=always \
