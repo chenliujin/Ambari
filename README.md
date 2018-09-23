@@ -1,21 +1,36 @@
-- 高可用
+# 高可用
 
-# Docker Install
-
-## docker image
-
-- 192.168.100.2   dns.chenliujin.com
-- 192.168.100.100 ambari-mysql.chenliujin.com
-- 192.168.100.101 ambari-server.chenliujin.com 
-- 192.168.100.102 ambari-h2.chenliujin.com 
+- dns.chenliujin.com: 192.168.100.2
+- ambari-mysql.chenliujin.com: 192.168.100.100
+- ambari-server.chenliujin.com 
+- ambari-h1.chenliujin.com: 192.168.100.101
   - NameNode
-- 192.168.100.103 ambari-h3.chenliujin.com
+  - HBase Master
+- ambari-h2.chenliujin.com: 192.168.100.102
   - SNameNode
-- 192.168.100.104 ambari-h4.chenliujin.com
+  - ZooKeeper
+- ambari-h3.chenliujin.com: 192.168.100.103
+  - ZooKeeper
+  - DataNode
 
-## 1. DNS Service
+---
 
-### 1.1 Docker Container
+# Docker network
+
+```
+docker network create \
+  --driver bridge \
+  --subnet 192.168.100.0/24 \
+  --gateway 192.168.100.1 \
+  -o parent=eth0 \
+  ambari-network
+```
+
+---
+
+# DNS Service
+
+## 1. Docker Container
 
 ```
 docker run \
@@ -28,13 +43,13 @@ docker run \
   centos:1.0.0 /usr/sbin/init
 ```
 
-### 1.2 安装 DNS Service
+## 2. 安装 DNS Service
 
 ```
 ansible-playbook dns.yml
 ```
 
-### 1.3 修改宿主服务器 DNS
+## 3. 修改宿主服务器 DNS
 
 ```
 # vim /etc/resolv.conf
@@ -42,23 +57,15 @@ nameserver 192.168.100.2
 nameserver 114.114.114.114
 nameserver 8.8.8.8
 
-# chattr +i /etc/resolv.conf --read only
+# chattr +i /etc/resolv.conf <--- read only
 ```
 
-## 2. Docker network
+---
 
-```
-docker network create \
-  --driver bridge \
-  --subnet 192.168.100.0/24 \
-  --gateway 192.168.100.1 \
-  -o parent=eth0 \
-  ambari-network
-```
 
-## 3. Ambari MySQL
+# ambari-mysql 
 
-### 3.1 docker mysql
+## 1. Docker Container
 
 ```
 docker run \
@@ -72,9 +79,9 @@ docker run \
   mysql:5.7.18
 ```
 
-### 3.2 mysql init
+## 2. mysql init
 
-- /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
+- docker cp ambari-server:/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql /root/
 
 ```
 # mysql -h 192.168.100.100 -uroot -p
@@ -85,14 +92,15 @@ mysql > flush privileges;
 mysql > use ambari;
 mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 ```
-## 4 ambari-server
 
-- 192.168.100.101 ambari-server.chenliujin.com
-  - dns
-  - ambari-server
-  - ntp
+---
 
-### 4.1 Docker
+# ambari-server
+
+- hostname: `ambari-server.chenliujin.com`
+- IP: `192.168.100.99`
+
+## 1. Docker Container
 
 ```
 docker run \
@@ -100,48 +108,12 @@ docker run \
   --restart=always \
   --name=ambari-server \
   --network=ambari-network \
-  --ip=192.168.100.101 \
+  --ip=192.168.100.99 \
   -h=ambari-server.chenliujin.com \
-  h1:latest /usr/sbin/init
+  chenliujin/ambari-server /usr/sbin/init
 ```
 
-### 4.2 yum 
-
-#### 4.2.1
-
-```
-curl http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.2.0/ambari.repo -o /etc/yum.repos.d/ambari.repo
-```
-
-#### 4.2.2
-
-```
-# yum install -y ambari-server
-```
-
-#### 4.2.3 MySQL Connector
-
-```
-yum install -y mysql-connector-java
-
-ln -s /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/mysql-connector-java.jar
-```
-
-
-
-
-
-
-## 2. Hive
-
-```
-mysql > create database hive;
-mysql > CREATE USER 'hive'@'%' IDENTIFIED BY 'chenliujin';
-mysql > GRANT ALL PRIVILEGES on hive.* to hive@'%';
-mysql > flush privileges;
-```
-
-# 初始化
+## 2. 初始化
 
 ```
 # ambari-server setup --api-ssl=false
@@ -175,7 +147,7 @@ GPL License for LZO: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 Enable Ambari Server to download and install GPL Licensed LZO packages [y/n] (n)? y
 Completing setup...
 Configuring database...
-Enter advanced database configuration [y/n] (n)? y <---选择y
+Enter advanced database configuration [y/n] (n)? y <---- 选择 y
 Configuring database...
 ==============================================================================
 Choose one of the following options:
@@ -189,15 +161,15 @@ Choose one of the following options:
 ==============================================================================
 Enter choice (1): 3
 Hostname (localhost): ambari-mysql.chenliujin.com
-Port (3306):
+Port (3306): <---- 使用默认端口，回车
 Database name (ambari):
-Username (ambari): root
-Enter Database Password (bigdata):
+Username (ambari): <---- 默认，回车
+Enter Database Password (bigdata): chenliujin <---- 输入数据库密码
 Re-enter password:
 Configuring ambari database...
 Should ambari use existing default jdbc /usr/share/java/mysql-connector-java.jar [y/n] (y)? y
 Configuring remote database connection properties...
-WARNING: Before starting Ambari Server, you must run the following DDL against the database to create the schema: /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
+WARNING: Before starting Ambari Server, you must run the following DDL against the database to create the schema: /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql <---- 需要初始化 ambari 数据库
 Proceed with configuring remote database connection properties [y/n] (y)? y <---选择 y
 Extracting system views...
 .....
@@ -206,12 +178,23 @@ Adjusting ambari-server permissions and ownership...
 Ambari Server 'setup' completed successfully.
 ```
 
-# 启动
+## 3. 启动
+
 ```
 # ambari-server start
 ```
 
-# 登陆
+## 4. 无密码登陆
+
+```
+ssh-copy-id ambari-h1.chenliujin.com
+ssh-copy-id ambari-h2.chenliujin.com
+ssh-copy-id ambari-h3.chenliujin.com
+```
+
+---
+
+# 集群安装
 
 - URL: `http://127.0.0.1:8080`
 - USERNAME: `admin`
@@ -224,14 +207,16 @@ Ambari Server 'setup' completed successfully.
  - HIVE: 1.2.1000
  - HBase: 1.1.2
  - Sqoop: 1.4.6
-1. Install Options
 1. Customize Services
 
 输入 Hive, Grafana 的账号或密码
 
+## Install Options
+
 ### Target Hosts
 
 ```
+ambari-h1.chenliujin.com
 ambari-h2.chenliujin.com
 ambari-h3.chenliujin.com
 ```
@@ -240,15 +225,7 @@ ambari-h3.chenliujin.com
 
 上传 ambari-server 服务器的 id_rsa 文件
 
-
-# ambari-agent
-
-## reset 
-
-```
-# ambari-agent stop
-# ambari-agent reset ambari-server.chenliujin.com
-```
+---
 
 # Service
 - HDFS: 2.7.3
@@ -259,11 +236,6 @@ ambari-h3.chenliujin.com
 - Sqoop: 1.4.6
 - ZooKeeper: 3.4.6
 
-
-NameNode: ambari-h2
-SNameNode: ambari-h3
-DataNode: ambari-h3
-HBase Master: ambari-h2
 
 
 
