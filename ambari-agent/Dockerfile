@@ -6,6 +6,7 @@ COPY ./etc/yum.repos.d /etc/yum.repos.d
 
 RUN yum install -y ambari-agent
 
+# 配置兼容，参考 README.md
 COPY ./etc/ambari-agent /etc/ambari-agent
 
 RUN echo "root:chenliujin" | chpasswd
