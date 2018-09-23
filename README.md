@@ -30,30 +30,17 @@ docker network create \
 
 # DNS Service
 
-## 1. Docker Container
-
-```
-docker run \
-  --name=dns \
-  --network=ambari-network \
-  --ip=192.168.100.2 \
-  -h=dns.chenliujin.com \
-  -d \
-  --restart=always \
-  centos:1.0.0 /usr/sbin/init
-```
-
-## 2. 安装 DNS Service
+## 1. 安装 DNS Service
 
 ```
 ansible-playbook dns.yml
 ```
 
-## 3. 修改宿主服务器 DNS
+## 2. 修改宿主服务器 DNS
 
 ```
 # vim /etc/resolv.conf
-nameserver 192.168.100.2
+nameserver 192.168.0.2 <---- 宿主服务器 IP
 nameserver 114.114.114.114
 nameserver 8.8.8.8
 
