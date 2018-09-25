@@ -1,15 +1,25 @@
+
+# 下载包
+
+```
+http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.0.0/ambari-2.6.0.0-centos7.tar.gz
+http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.5.0/HDP-2.6.5.0-centos7-rpm.tar.gz
+http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-1.1.0.21-centos7.tar.gz
+```
+
+
 # 高可用
 
 - dns.chenliujin.com: 192.168.100.2
 - ambari-mysql.chenliujin.com: 192.168.100.100
-- ambari-server.chenliujin.com 
-- ambari-h1.chenliujin.com: 192.168.100.101
+- ambari.chenliujin.com 
+- hdp1.chenliujin.com: 192.168.100.101
   - NameNode
   - HBase Master
-- ambari-h2.chenliujin.com: 192.168.100.102
+- hdp2.chenliujin.com: 192.168.100.102
   - SNameNode
   - ZooKeeper
-- ambari-h3.chenliujin.com: 192.168.100.103
+- hdp33.chenliujin.com: 192.168.100.103
   - ZooKeeper
   - DataNode
 
@@ -84,7 +94,7 @@ mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 
 # ambari-server
 
-- hostname: `ambari-server.chenliujin.com`
+- hostname: `ambari.chenliujin.com`
 - IP: `192.168.100.99`
 
 ## 1. Docker Container
@@ -93,10 +103,10 @@ mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 docker run \
   -d \
   --restart=always \
-  --name=ambari-server \
+  --name=ambari \
   --network=ambari-network \
   --ip=192.168.100.99 \
-  -h=ambari-server.chenliujin.com \
+  -h=ambari.chenliujin.com \
   chenliujin/ambari-server /usr/sbin/init
 ```
 
