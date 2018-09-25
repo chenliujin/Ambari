@@ -241,3 +241,4 @@ ambari-h3.chenliujin.com
 
 - [HDP](https://zh.hortonworks.com/products/data-platforms/hdp/)
 - http://blog.51cto.com/tryingstuff/2066561
+- [CentOS7上本地源方式安装Ambari-2.5.2.0+HDP-2.6.2.0](https://blog.csdn.net/sunggff/article/details/78933632)
