@@ -7,4 +7,4 @@ docker run \
   --network=ambari-network \
   --ip=192.168.100.99 \
   -h=ambari.chenliujin.com \
-  h1:latest /usr/sbin/init
+  chenliujin/ambari-server:2.6.2 /usr/sbin/init
