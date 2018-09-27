@@ -10,3 +10,4 @@ docker run \
   -e MYSQL_ROOT_PASSWORD='chenliujin' \
   chenliujin/ambari-mysql:2.6.2
   #mysql:5.7.18
+  #chenliujin/ambari-mysql:2.6.2 /bin/bash /usr/local/bin/docker-entrypoint.sh
