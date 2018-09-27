@@ -8,4 +8,5 @@ docker run \
   --ip=192.168.100.100 \
   -p 3307:3306 \
   -e MYSQL_ROOT_PASSWORD='chenliujin' \
-  mysql:5.7.18
+  chenliujin/ambari-mysql:2.6.2
+  #mysql:5.7.18
