@@ -2,9 +2,9 @@
 
 docker run \
   --network=ambari-network \
-  --ip=192.168.100.102 \
-  --name=hdp2 \
-  -h=hdp2.chenliujin.com \
+  --ip=192.168.100.103 \
+  --name=h3 \
+  -h=h3.chenliujin.com \
   --privileged \
   -d \
   --restart=always \
