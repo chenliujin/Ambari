@@ -1,3 +1,6 @@
+# 高可用
+
+
 
 # 下载包
 
@@ -8,18 +11,16 @@ http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-
 ```
 
 
-# 高可用
 
 - dns.chenliujin.com: 192.168.100.2
 - ambari-mysql.chenliujin.com: 192.168.100.100
 - ambari.chenliujin.com 
-- hdp1.chenliujin.com: 192.168.100.101
+- h1.chenliujin.com: 192.168.100.101
   - NameNode
   - HBase Master
-- hdp2.chenliujin.com: 192.168.100.102
-  - SNameNode
   - ZooKeeper
-- hdp33.chenliujin.com: 192.168.100.103
+- h2.chenliujin.com: 192.168.100.102
+  - SNameNode
   - ZooKeeper
   - DataNode
 
@@ -184,9 +185,9 @@ Ambari Server 'setup' completed successfully.
 ## 4. 无密码登陆
 
 ```
-ssh-copy-id ambari-h1.chenliujin.com
-ssh-copy-id ambari-h2.chenliujin.com
-ssh-copy-id ambari-h3.chenliujin.com
+ssh-copy-id h1.chenliujin.com
+ssh-copy-id h2.chenliujin.com
+ssh-copy-id h3.chenliujin.com
 ```
 
 ---
@@ -213,9 +214,9 @@ ssh-copy-id ambari-h3.chenliujin.com
 ### Target Hosts
 
 ```
-ambari-h1.chenliujin.com
-ambari-h2.chenliujin.com
-ambari-h3.chenliujin.com
+h1.chenliujin.com
+h2.chenliujin.com
+h3.chenliujin.com
 ```
 
 ### Host Registration Information
