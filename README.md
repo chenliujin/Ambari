@@ -158,7 +158,7 @@ Choose one of the following options:
 [7] - BDB
 ==============================================================================
 Enter choice (1): 3
-Hostname (localhost): ambari-mysql.chenliujin.com
+Hostname (localhost): mysql.chenliujin.com
 Port (3306): <---- 使用默认端口，回车
 Database name (ambari):
 Username (ambari): <---- 默认，回车
