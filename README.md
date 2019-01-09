@@ -60,29 +60,12 @@ nameserver 8.8.8.8
 
 ---
 
-
-# ambari-mysql 
-
-## 1. Docker Container
-
-```
-docker run \
-  -d \
-  --name=ambari-mysql \
-  --restart=always \
-  --network=ambari-network \
-  --ip=192.168.100.100 \
-  -p 3307:3306 \
-  -e MYSQL_ROOT_PASSWORD='chenliujin' \
-  mysql:5.7.18
-```
-
-## 2. mysql init
+# MySQL 
 
 - docker cp ambari-server:/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql /root/
 
 ```
-# mysql -h 192.168.100.100 -uroot -p
+# mysql -h mysql.chenliujin.com -uroot -p
 mysql > create database ambari;
 mysql > CREATE USER 'ambari'@'%' IDENTIFIED BY 'chenliujin';
 mysql > GRANT ALL PRIVILEGES on ambari.* to ambari@'%';
