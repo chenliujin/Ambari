@@ -13,7 +13,7 @@ http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-
 
 
 - dns.chenliujin.com: 192.168.100.2
-- ambari-mysql.chenliujin.com: 192.168.100.100
+- mysql.chenliujin.com: 192.168.100.100
 - ambari.chenliujin.com 
 - h1.chenliujin.com: 192.168.100.101
   - NameNode
