@@ -47,19 +47,6 @@ http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-
 
 ---
 
-# Docker network
-
-```
-docker network create \
-  --driver bridge \
-  --subnet 192.168.100.0/24 \
-  --gateway 192.168.100.1 \
-  -o parent=eth0 \
-  ambari-network
-```
-
----
-
 # DNS Service
 
 ## 1. 安装 DNS Service
