@@ -1,3 +1,36 @@
+# 服务器列表
+* dns.chenliujin.com
+* mysql.chenliujin.com
+* ambari.chenliujin.com 
+* h1.chenliujin.com
+* h2.chenliujin.com
+* h3.chenliujin.com
+* h4.chenliujin.com
+* h5.chenliujin.com
+
+## 1. 配置
+
+### h1.chenliujin.com
+* NameNode
+* HBase Master
+
+### h2.chenliujin.com
+* SNameNode
+
+### h3.chenliujin.com
+* DataNode
+* ZooKeeper
+
+### h4.chenliujin.com
+* DataNode
+* ZooKeeper
+
+### h5.chenliujin.com
+* DataNode
+* ZooKeeper
+
+---
+
 # 高可用
 
 
@@ -11,18 +44,6 @@ http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-
 ```
 
 
-
-- dns.chenliujin.com: 192.168.100.2
-- mysql.chenliujin.com: 192.168.100.100
-- ambari.chenliujin.com 
-- h1.chenliujin.com: 192.168.100.101
-  - NameNode
-  - HBase Master
-  - ZooKeeper
-- h2.chenliujin.com: 192.168.100.102
-  - SNameNode
-  - ZooKeeper
-  - DataNode
 
 ---
 
@@ -72,6 +93,8 @@ mysql > GRANT ALL PRIVILEGES on ambari.* to ambari@'%';
 mysql > flush privileges;
 mysql > use ambari;
 mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
+
+# ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 ```
 
 ---
@@ -79,7 +102,6 @@ mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
 # ambari-server
 
 - hostname: `ambari.chenliujin.com`
-- IP: `192.168.100.99`
 
 ## 1. Docker Container
 
