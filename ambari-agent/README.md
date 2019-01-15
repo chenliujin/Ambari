@@ -3,6 +3,7 @@
 ```
 # ambari-agent stop
 # ambari-agent reset ambari.chenliujin.com
+# systemctl start ambari-agent
 ```
 
 # ambari.repo
