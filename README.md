@@ -106,22 +106,24 @@ docker run \
 ## 2. 初始化
 
 ```
+# yum install -y mysql-connector-java
+
 # ambari-server setup --api-ssl=false
 
 Using python  /usr/bin/python
 Setup ambari-server
 Checking SELinux...
 WARNING: Could not run /usr/sbin/sestatus: OK
-Customize user account for ambari-server daemon [y/n] (n)? n <-----选择 n
+Customize user account for ambari-server daemon [y/n] (n)? <-----默认，回车
 Adjusting ambari-server permissions and ownership...
 Checking firewall status...
 Checking JDK...
 [1] Oracle JDK 1.8 + Java Cryptography Extension (JCE) Policy Files 8
 [2] Custom JDK
 ==============================================================================
-Enter choice (1):
+Enter choice (1): <-----默认1，回车
 To download the Oracle JDK and the Java Cryptography Extension (JCE) Policy Files you must accept the license terms found at http://www.oracle.com/technetwork/java/javase/terms/license/index.html and not accepting will cancel the Ambari Server setup and you must install the JDK and JCE files manually.
-Do you accept the Oracle Binary Code License Agreement [y/n] (y)? y
+Do you accept the Oracle Binary Code License Agreement [y/n] (y)? <-----默认y，回车
 Downloading JDK from http://public-repo-1.hortonworks.com/ARTIFACTS/jdk-8u112-linux-x64.tar.gz to /var/lib/ambari-server/resources/jdk-8u112-linux-x64.tar.gz
 jdk-8u112-linux-x64.tar.gz... 100% (174.7 MB of 174.7 MB)
 Successfully downloaded JDK distribution to /var/lib/ambari-server/resources/jdk-8u112-linux-x64.tar.gz
@@ -134,10 +136,10 @@ JDK version found: 8
 Minimum JDK version is 8 for Ambari. Skipping to setup different JDK for Ambari Server.
 Checking GPL software agreement...
 GPL License for LZO: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
-Enable Ambari Server to download and install GPL Licensed LZO packages [y/n] (n)? y
+Enable Ambari Server to download and install GPL Licensed LZO packages [y/n] (n)? <-----选择y，回车
 Completing setup...
 Configuring database...
-Enter advanced database configuration [y/n] (n)? y <---- 选择 y
+Enter advanced database configuration [y/n] (n)? y <-----选择 y，回车
 Configuring database...
 ==============================================================================
 Choose one of the following options:
@@ -149,21 +151,21 @@ Choose one of the following options:
 [6] - SQL Anywhere
 [7] - BDB
 ==============================================================================
-Enter choice (1): 3
-Hostname (localhost): mysql.chenliujin.com
-Port (3306): <---- 使用默认端口，回车
-Database name (ambari):
+Enter choice (1): 3 <-----选择3，回车
+Hostname (localhost): mysql.chenliujin.com <-----输入mysql.chenliujin.com，回车
+Port (3306): <-----使用默认端口，回车
+Database name (ambari): <-----默认，回车
 Username (ambari): <---- 默认，回车
 Enter Database Password (bigdata): chenliujin <---- 输入数据库密码
-Re-enter password:
+Re-enter password: <-----确认密码
 Configuring ambari database...
 Should ambari use existing default jdbc /usr/share/java/mysql-connector-java.jar [y/n] (y)? y
 Configuring remote database connection properties...
 WARNING: Before starting Ambari Server, you must run the following DDL against the database to create the schema: /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql <---- 需要初始化 ambari 数据库
 Proceed with configuring remote database connection properties [y/n] (y)? y <---选择 y
 Extracting system views...
-.....
-Ambari repo file contains latest json url http://public-repo-1.hortonworks.com/HDP/hdp_urlinfo.json, updating stacks repoinfos with it...
+ambari-admin-2.6.2.0.155.jar
+...........
 Adjusting ambari-server permissions and ownership...
 Ambari Server 'setup' completed successfully.
 ```
