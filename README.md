@@ -39,8 +39,9 @@
 * ZooKeeper Server(ZooKeeper)
 
 ### h5.chenliujin.com
-* DataNode
-* ZooKeeper Server(ZooKeeper)
+* Spark2 History Server(Spark2)
+* Spark2 Thrift Server(Spark2)
+* Livy for Spark2 Server(Spark2)
 
 ---
 
