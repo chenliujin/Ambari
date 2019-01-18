@@ -8,26 +8,39 @@
 * h4.chenliujin.com
 * h5.chenliujin.com
 
-## 1. 配置
+## 1. Components 
 
-### h1.chenliujin.com
-* NameNode
-* HBase Master
+### h1.chenliujin.com(node1.hadooptest.com)
+* NameNode(HDFS)
 
 ### h2.chenliujin.com
-* SNameNode
+* SNameNode(HDFS)
+* Metrics Collector
+* Grafana
+* Activity Analyzer
+* Activity Explorer
+* HST Server
 
 ### h3.chenliujin.com
-* DataNode
-* ZooKeeper
+* DataNode(HDFS)
+* ZooKeeper Server(ZooKeeper)
+* App Timeline Server()
+* ResourceManager()
+* History Server()
+* NodeManager()
+* Hive Metastore(Hive)
+* WebHCat Server
+* HiveServer2(Hive)
 
 ### h4.chenliujin.com
 * DataNode
-* ZooKeeper
+* HBase Master(HBase)
+* RegionServers(HBase)
+* ZooKeeper Server(ZooKeeper)
 
 ### h5.chenliujin.com
 * DataNode
-* ZooKeeper
+* ZooKeeper Server(ZooKeeper)
 
 ---
 
@@ -80,8 +93,6 @@ mysql > GRANT ALL PRIVILEGES on ambari.* to ambari@'%';
 mysql > flush privileges;
 mysql > use ambari;
 mysql > source /root/Ambari-DDL-MySQL-CREATE.sql;
-
-# ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 ```
 
 ---
@@ -173,6 +184,7 @@ Ambari Server 'setup' completed successfully.
 ## 3. 启动
 
 ```
+# ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 # ambari-server start
 ```
 
