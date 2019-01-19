@@ -118,6 +118,7 @@ docker run \
 ## 2. 初始化
 
 ```
+# 修改 ulimit
 # yum install -y mysql-connector-java
 
 # ambari-server setup --api-ssl=false
