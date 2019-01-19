@@ -243,6 +243,8 @@ h3.chenliujin.com
 - ZooKeeper: 3.4.6
 
 
+# 注意事项
+* hyper-v 网络适配器使用默认开关，否则虚拟机之间的网络通信会不稳定
 
 
 
