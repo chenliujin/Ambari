@@ -1,0 +1,11 @@
+- hosts: ambari-agent
+  tasks: 
+    - name: yum.repos.d
+      copy: src=./etc/yum.repos.d/ dest=/etc/yum.repos.d/
+
+    - name: install 
+      shell: yum install -y ambari-agent
+
+    - name: config
+      copy: src=./etc/ambari-agent dest=/etc/ambari-agent
+
