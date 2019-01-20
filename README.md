@@ -57,6 +57,10 @@ http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.5.0/HDP-2.6.5.0
 http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-1.1.0.21-centos7.tar.gz
 ```
 
+## 本地源
+* http://mirrors.chenliujin.com/HDP/centos7/2.x/updates/2.6.5.0/
+* http://mirrors.chenliujin.com/HDP-GPL/centos7/2.x/updates/2.6.5.0/
+* http://mirrors.chenliujin.com/HDP-UTILS-1.1.0.22/repos/centos7/
 
 
 ---
