@@ -13,6 +13,11 @@
 ### h1.chenliujin.com(node1.hadooptest.com)
 * NameNode(HDFS)
 
+```
+# hostnamectl set-hostname h1.chenliujin.com
+# ansible-playbook ambari-agent.yml
+```
+
 ### h2.chenliujin.com
 * SNameNode(HDFS)
 * Metrics Collector
@@ -20,6 +25,12 @@
 * Activity Analyzer
 * Activity Explorer
 * HST Server
+
+```
+# hostnamectl set-hostname h2.chenliujin.com
+```
+
+
 
 ### h3.chenliujin.com
 * DataNode(HDFS)
