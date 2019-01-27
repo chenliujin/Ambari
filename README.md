@@ -1,63 +1,28 @@
 # 服务器列表
-* dns.chenliujin.com
-* mysql.chenliujin.com
 * ambari.chenliujin.com 
+* mysql.chenliujin.com
+* mirrors.chenliujin.com
 * h1.chenliujin.com
 * h2.chenliujin.com
 * h3.chenliujin.com
 * h4.chenliujin.com
 * h5.chenliujin.com
 
+node1.hadooptest.com
+
 ## 1. Components 
-
-### h1.chenliujin.com(node1.hadooptest.com)
-* NameNode(HDFS)
-
-```
-# hostnamectl set-hostname h1.chenliujin.com
-# ansible-playbook ambari-agent.yml
-```
-
-### h2.chenliujin.com
-* SNameNode(HDFS)
-* Metrics Collector
-* Grafana
-* Activity Analyzer
-* Activity Explorer
-* HST Server
-
-```
-# hostnamectl set-hostname h2.chenliujin.com
-```
-
-
-
-### h3.chenliujin.com
-* DataNode(HDFS)
-* ZooKeeper Server(ZooKeeper)
-* App Timeline Server()
-* ResourceManager()
-* History Server()
-* NodeManager()
-* Hive Metastore(Hive)
-* WebHCat Server
-* HiveServer2(Hive)
-
-### h4.chenliujin.com
-* DataNode
-* HBase Master(HBase)
-* RegionServers(HBase)
-* ZooKeeper Server(ZooKeeper)
-
-### h5.chenliujin.com
-* Spark2 History Server(Spark2)
-* Spark2 Thrift Server(Spark2)
-* Livy for Spark2 Server(Spark2)
+* ZooKeeper
+* HDFS
+* Yarn
+* MapReduce2
+* Hive
+* HBase
+* Sqoop
+* Spark
 
 ---
 
 # 高可用
-
 
 
 # 下载包
@@ -75,6 +40,12 @@ http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos7/HDP-UTILS-
 
 
 ---
+
+```
+# hostnamectl set-hostname h1.chenliujin.com
+# ansible-playbook ambari-agent.yml
+```
+
 
 # DNS Service
 
